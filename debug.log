@@ -1,0 +1,22 @@
+2025-02-13 21:02:16,255 - INFO - Starting BLS data processing with filtering from local files.
+2025-02-13 21:02:16,255 - INFO - Loading series data from data/oe.series
+2025-02-13 21:02:29,363 - INFO - Series data loaded. Columns: ['series_id', 'seasonal', 'areatype_code', 'industry_code', 'occupation_code', 'datatype_code', 'state_code', 'area_code', 'sector_code', 'series_title', 'footnote_codes', 'begin_year', 'begin_period', 'end_year', 'end_period']
+2025-02-13 21:02:30,688 - INFO - Series data filtered. Shape: (988595, 5)
+2025-02-13 21:02:30,689 - INFO - Loading datatype data from data/oe.datatype
+2025-02-13 21:02:30,852 - INFO - Datatype data filtered. Shape: (5, 2)
+2025-02-13 21:02:30,852 - INFO - Loading occupation data from data/oe.occupation
+2025-02-13 21:02:30,859 - INFO - Occupation data processed. Shape: (1105, 4)
+2025-02-13 21:02:30,859 - INFO - Loading current data from data/oe.data.0.Current
+2025-02-13 21:02:35,270 - INFO - Current data loaded. Columns: ['series_id', 'year', 'period', 'value', 'footnote_codes']
+2025-02-13 21:02:43,720 - INFO - Current data processed. Shape: (6020310, 2)
+2025-02-13 21:02:43,720 - INFO - Merging series and current data on 'series_id'.
+2025-02-13 21:02:44,135 - INFO - After merging series and current: (988595, 6)
+2025-02-13 21:02:44,136 - INFO - Merging with datatype data on 'datatype_code'.
+2025-02-13 21:02:44,228 - INFO - After merging with datatype: (988595, 7)
+2025-02-13 21:02:44,305 - INFO - Columns after dropping unneeded fields: ['occupation_code', 'area_code', 'end_year', 'value', 'datatype_name']
+2025-02-13 21:02:44,306 - INFO - Pivoting table so that each datatype becomes its own column.
+2025-02-13 21:02:44,726 - INFO - Pivot complete. Shape: (195638, 7)
+2025-02-13 21:02:44,726 - INFO - Merging pivoted data with occupation data on 'occupation_code'.
+2025-02-13 21:02:44,772 - INFO - Final merge complete. Final DataFrame shape: (195638, 9)
+2025-02-13 21:02:44,773 - INFO - Exporting final dataset to final_dataset.csv
+2025-02-13 21:02:46,042 - INFO - Export completed successfully.
